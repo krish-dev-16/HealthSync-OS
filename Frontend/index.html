@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HealthSync OS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <div class="brand">HealthSync OS</div>
+    <nav aria-label="Main">
+      <button class="nav" data-view="safety" aria-current="page">Clinical Safety</button>
+      <button class="nav" data-view="auth">Authorization</button>
+      <button class="nav" data-view="supply">Supply Chain</button>
+      <button class="nav" data-view="audit">Audit Trail</button>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <section id="view-safety" aria-label="Clinical Safety">
+      <div class="row header">
+        <div>
+          <h1>Prescription workflow</h1>
+          <p class="sub flush">Synthetic patient · 7 active medications · all figures are sample data</p>
+        </div>
+        <div class="row">
+          <button id="reset" class="link">Reset demo</button>
+          <span id="header-pill" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="card pipeline">
+        <div class="row stages" id="stages"></div>
+        <div class="row">
+          <button id="approve" class="btn btn--primary">Approve and submit</button>
+          <button id="review" class="btn btn--secondary">Review changes</button>
+        </div>
+      </div>
+
+      <div class="grid">
+        <section class="card c7">
+          <h2>Interaction graph</h2>
+          <p class="sub">New prescription competes for the CYP3A4 pathway</p>
+          <svg viewBox="0 0 440 240" width="100%" role="img" aria-label="The new prescription inhibits CYP3A4, raising levels of three existing medications">
+            <line x1="110" y1="120" x2="186" y2="120" stroke="#B42318" stroke-width="4"/>
+            <line x1="248" y1="104" x2="330" y2="46" stroke="#B42318" stroke-width="3"/>
+            <line x1="254" y1="120" x2="330" y2="120" stroke="#B45309" stroke-width="2.5"/>
+            <line x1="248" y1="136" x2="330" y2="194" stroke="#B45309" stroke-width="2.5"/>
+            <text x="148" y="110" font-size="11" fill="#B42318" text-anchor="middle">inhibits</text>
+            <rect x="10" y="98" width="100" height="44" rx="8" fill="#1F4E8C"/>
+            <text x="60" y="117" font-size="11" fill="#fff" text-anchor="middle">New Rx</text>
+            <text x="60" y="132" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Drug A</text>
+            <circle cx="218" cy="120" r="34" fill="#FEE4E2" stroke="#B42318" stroke-width="2"/>
+            <text x="218" y="118" font-size="12" font-weight="700" fill="#0F2137" text-anchor="middle">CYP3A4</text>
+            <text x="218" y="133" font-size="11" fill="#B42318" text-anchor="middle">saturated</text>
+            <rect x="330" y="26" width="100" height="40" rx="8" fill="#fff" stroke="#B42318" stroke-width="2"/>
+            <text x="380" y="50" font-size="12" font-weight="600" fill="#0F2137" text-anchor="middle">Drug B</text>
+            <rect x="330" y="100" width="100" height="40" rx="8" fill="#fff" stroke="#B45309" stroke-width="2"/>
+            <text x="380" y="124" font-size="12" font-weight="600" fill="#0F2137" text-anchor="middle">Drug C</text>
+            <rect x="330" y="174" width="100" height="40" rx="8" fill="#fff" stroke="#B45309" stroke-width="2"/>
+            <text x="380" y="198" font-size="12" font-weight="600" fill="#0F2137" text-anchor="middle">Drug D</text>
+          </svg>
+        </section>
+
+        <section class="card c5" id="sim-card" tabindex="-1">
+          <h2>72-hour concentration simulation</h2>
+          <p class="sub">Hepatic, renal and cardiac models, sample output</p>
+          <svg viewBox="0 0 440 240" width="100%" role="img" aria-label="Concentration over 72 hours: unadjusted dose crosses the toxicity threshold, adjusted dose stays below it">
+            <line x1="40" y1="200" x2="420" y2="200" stroke="#9AA9BC"/>
+            <line x1="40" y1="20" x2="40" y2="200" stroke="#9AA9BC"/>
+            <line x1="40" y1="80" x2="420" y2="80" stroke="#B45309" stroke-dasharray="6 4"/>
+            <text x="46" y="72" font-size="11" fill="#92400E">Toxicity threshold</text>
+            <path d="M40,190 C100,150 160,140 230,145 S350,160 420,165" fill="none" stroke="#5B6B7F" stroke-width="2" stroke-dasharray="3 3"/>
+            <path d="M40,190 C100,140 160,90 230,60 S350,40 420,35" fill="none" stroke="#B42318" stroke-width="3"/>
+            <path d="M40,190 C100,150 160,125 230,115 S350,110 420,112" fill="none" stroke="#0F766E" stroke-width="3"/>
+            <text x="40" y="218" font-size="11" fill="#5B6B7F" text-anchor="middle">0h</text>
+            <text x="167" y="218" font-size="11" fill="#5B6B7F" text-anchor="middle">24h</text>
+            <text x="293" y="218" font-size="11" fill="#5B6B7F" text-anchor="middle">48h</text>
+            <text x="420" y="218" font-size="11" fill="#5B6B7F" text-anchor="end">72h</text>
+          </svg>
+          <div class="row legend">
+            <span><b class="red">Red</b> original dose</span>
+            <span><b class="teal">Teal</b> adjusted dose</span>
+            <span><b>Dashed grey</b> baseline</span>
+          </div>
+        </section>
+
+        <section class="card c4">
+          <h2>Prior authorization</h2>
+          <p class="sub">Da Vinci FHIR submission</p>
+          <ol class="steps" id="pa-steps"></ol>
+        </section>
+
+        <section class="card c4">
+          <h2>Supply</h2>
+          <p class="sub">Specialty item · days of supply vs. appointment</p>
+          <div class="bar"><div id="stock-fill" class="bar-fill"></div></div>
+          <div class="row spread small muted bar-labels"><span>Current stock</span><span>Needed by appointment</span></div>
+          <div class="supply-list" id="supply-list"></div>
+        </section>
+
+        <section class="card c4">
+          <h2>Agent trace</h2>
+          <p class="sub">Live decisions with sources</p>
+          <div class="trace" id="trace"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="view-placeholder" class="card" hidden>
+      <h2 id="placeholder-title"></h2>
+      <p class="sub flush">This view is not built yet. Clinical Safety is the first screen.</p>
+    </section>
+  </main>
+</div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
