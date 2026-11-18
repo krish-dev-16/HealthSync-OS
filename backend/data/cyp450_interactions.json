@@ -1,0 +1,109 @@
+{
+  "_note": "Synthetic, illustrative values only. Not for clinical use.",
+  "perpetrators": {
+    "ritonavir_boosted": {
+      "name": "Drug A (ritonavir-boosted regimen)",
+      "enzyme": "CYP3A4",
+      "mechanism": "strong mechanism-based inhibitor",
+      "ki_uM": 0.05,
+      "plasma_conc_uM": 0.3
+    },
+    "biologic_none": {
+      "name": "Drug A (biologic)",
+      "enzyme": null,
+      "mechanism": "no cytochrome P450 involvement",
+      "ki_uM": null,
+      "plasma_conc_uM": 0.0
+    },
+    "amlodipine_weak": {
+      "name": "Drug A (formulary-preferred agent)",
+      "enzyme": "CYP3A4",
+      "mechanism": "weak competitive inhibitor",
+      "ki_uM": 3.0,
+      "plasma_conc_uM": 1.0
+    }
+  },
+  "victims": {
+    "tacrolimus": {
+      "name": "Tacrolimus",
+      "enzyme": "CYP3A4",
+      "fm": 0.95,
+      "narrow_therapeutic_index": true,
+      "unit": "ng/mL",
+      "toxicity_threshold": 20.0,
+      "therapeutic_window": [
+        5.0,
+        15.0
+      ],
+      "dose_mg": 1.2,
+      "interval_h": 12,
+      "bioavailability": 0.25,
+      "volume_L": 62.0,
+      "ke_baseline_per_h": 0.04,
+      "ka_per_h": 1.0,
+      "dose_step": 0.05
+    },
+    "atorvastatin": {
+      "name": "Atorvastatin",
+      "enzyme": "CYP3A4",
+      "fm": 0.7,
+      "narrow_therapeutic_index": false,
+      "unit": "ng/mL",
+      "toxicity_threshold": 25.0,
+      "therapeutic_window": [
+        2.0,
+        15.0
+      ],
+      "dose_mg": 20.0,
+      "interval_h": 24,
+      "bioavailability": 0.14,
+      "volume_L": 381.0,
+      "ke_baseline_per_h": 0.05,
+      "ka_per_h": 1.2,
+      "dose_step": 0.25
+    },
+    "amlodipine": {
+      "name": "Amlodipine",
+      "enzyme": "CYP3A4",
+      "fm": 0.9,
+      "narrow_therapeutic_index": false,
+      "unit": "ng/mL",
+      "toxicity_threshold": 30.0,
+      "therapeutic_window": [
+        3.0,
+        20.0
+      ],
+      "dose_mg": 5.0,
+      "interval_h": 24,
+      "bioavailability": 0.64,
+      "volume_L": 1500.0,
+      "ke_baseline_per_h": 0.02,
+      "ka_per_h": 0.2,
+      "dose_step": 0.25
+    },
+    "simvastatin": {
+      "name": "Simvastatin",
+      "enzyme": "CYP3A4",
+      "fm": 0.8,
+      "narrow_therapeutic_index": false,
+      "unit": "ng/mL",
+      "toxicity_threshold": 25.0,
+      "therapeutic_window": [
+        1.0,
+        15.0
+      ],
+      "dose_mg": 20.0,
+      "interval_h": 24,
+      "bioavailability": 0.05,
+      "volume_L": 300.0,
+      "ke_baseline_per_h": 0.2,
+      "ka_per_h": 1.5,
+      "dose_step": 0.25
+    }
+  },
+  "safe_dose_rules": {
+    "target_peak_fraction_of_threshold": 0.8,
+    "multiplier_floor": 0.1,
+    "multiplier_step": 0.05
+  }
+}

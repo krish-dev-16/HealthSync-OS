@@ -1,0 +1,50 @@
+{
+  "_note": "Synthetic inventory. NDC codes are made up.",
+  "items": {
+    "PT-1042": {
+      "ndc": "00000-1042-01",
+      "product": "Drug A specialty infusion kit",
+      "unit": "kit",
+      "stock_units": 8,
+      "required_units": 20,
+      "stock_days": 4,
+      "reorder_threshold_units": 10,
+      "unit_price_usd": 410.0,
+      "supplier": {
+        "name": "Meridian Specialty Distribution",
+        "edi_id": "MERIDIAN01",
+        "lead_time_hours": 24
+      }
+    },
+    "PT-2089": {
+      "ndc": "00000-2089-02",
+      "product": "Drug A biologic prefilled pen",
+      "unit": "pen",
+      "stock_units": 3,
+      "required_units": 20,
+      "stock_days": 2,
+      "reorder_threshold_units": 8,
+      "unit_price_usd": 1325.0,
+      "supplier": {
+        "name": "Meridian Specialty Distribution",
+        "edi_id": "MERIDIAN01",
+        "lead_time_hours": 24
+      }
+    },
+    "PT-3115": {
+      "ndc": "00000-3115-03",
+      "product": "Drug A 30-day pack",
+      "unit": "pack",
+      "stock_units": 17,
+      "required_units": 20,
+      "stock_days": 26,
+      "reorder_threshold_units": 6,
+      "unit_price_usd": 18.5,
+      "supplier": {
+        "name": "Meridian Specialty Distribution",
+        "edi_id": "MERIDIAN01",
+        "lead_time_hours": 24
+      }
+    }
+  }
+}

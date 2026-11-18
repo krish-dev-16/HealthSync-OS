@@ -1,0 +1,149 @@
+{
+  "_note": "Fictional payer. Policy text is synthetic.",
+  "payer": {
+    "id": "PAYER-NWH",
+    "name": "Northwind Health Plan",
+    "fhir_org_id": "org-northwind"
+  },
+  "policies": {
+    "POL-ART-01": {
+      "title": "Boosted antiretroviral regimen, Clinical Policy Bulletin",
+      "document": "Northwind CPB-ART-01",
+      "applies_to": "ritonavir_boosted",
+      "codes": {
+        "icd10": [
+          "B20",
+          "Z94.0"
+        ],
+        "cpt": [
+          "96365"
+        ]
+      },
+      "sections": {
+        "1": "Scope and definitions",
+        "2": "Coverage determination process",
+        "3": "Clinical criteria for approval",
+        "4": "Appeals and peer-to-peer review"
+      },
+      "criteria_section": "3",
+      "criteria": [
+        {
+          "id": "dx",
+          "text": "Confirmed HIV-1 diagnosis (ICD-10 B20) documented in chart",
+          "check": "dx_code",
+          "equals": "B20"
+        },
+        {
+          "id": "vl",
+          "text": "HIV-1 RNA above 200 copies/mL in the last 90 days",
+          "check": "lab_gt",
+          "lab": "hiv_rna_copies_ml",
+          "value": 200
+        },
+        {
+          "id": "ddi",
+          "text": "Documented drug-interaction review with dose plan for narrow-therapeutic-index co-medications",
+          "check": "interaction_review"
+        }
+      ]
+    },
+    "POL-BIO-02": {
+      "title": "TNF-inhibitor biologics for Crohn's disease, Clinical Policy Bulletin",
+      "document": "Northwind CPB-BIO-02",
+      "applies_to": "biologic_none",
+      "codes": {
+        "icd10": [
+          "K50.90"
+        ],
+        "cpt": [
+          "96413"
+        ]
+      },
+      "sections": {
+        "1": "Scope and definitions",
+        "2": "Coverage determination process",
+        "3": "Clinical criteria for approval (step therapy)",
+        "4": "Appeals and peer-to-peer review"
+      },
+      "criteria_section": "3",
+      "criteria": [
+        {
+          "id": "dx",
+          "text": "Moderate to severe Crohn's disease (ICD-10 K50.90)",
+          "check": "dx_code",
+          "equals": "K50.90"
+        },
+        {
+          "id": "step",
+          "text": "Step therapy: at least 12 weeks of a conventional agent with inadequate response or intolerance",
+          "check": "step_weeks",
+          "min_weeks": 12
+        },
+        {
+          "id": "tb",
+          "text": "Negative tuberculosis screening within 12 months",
+          "check": "flag",
+          "flag": "tb_screen_negative_12mo"
+        }
+      ]
+    },
+    "POL-STD-03": {
+      "title": "Formulary-preferred cardiovascular agents, Clinical Policy Bulletin",
+      "document": "Northwind CPB-CV-03",
+      "applies_to": "amlodipine_weak",
+      "codes": {
+        "icd10": [
+          "I10"
+        ],
+        "cpt": []
+      },
+      "sections": {
+        "1": "Scope and definitions",
+        "2": "Coverage determination process",
+        "3": "Formulary status and clinical criteria",
+        "4": "Appeals and peer-to-peer review"
+      },
+      "criteria_section": "3",
+      "criteria": [
+        {
+          "id": "dx",
+          "text": "Diagnosis of hypertension (ICD-10 I10)",
+          "check": "dx_code",
+          "equals": "I10"
+        },
+        {
+          "id": "formulary",
+          "text": "Agent is on the preferred formulary tier",
+          "check": "flag",
+          "flag": "formulary_preferred"
+        }
+      ]
+    }
+  },
+  "fhir_claim_template": {
+    "resourceType": "Claim",
+    "meta": {
+      "profile": [
+        "http://hl7.org/fhir/us/davinci-pas/StructureDefinition/profile-claim"
+      ]
+    },
+    "status": "active",
+    "type": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/claim-type",
+          "code": "professional"
+        }
+      ]
+    },
+    "use": "preauthorization",
+    "priority": {
+      "coding": [
+        {
+          "system": "http://terminology.hl7.org/CodeSystem/processpriority",
+          "code": "normal"
+        }
+      ]
+    }
+  }
+}
