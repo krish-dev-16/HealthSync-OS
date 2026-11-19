@@ -1,6 +1,18 @@
 # HealthSync OS
 
-Autonomous clinical fulfillment engine, hackathon MVP. Three CrewAI agents (Clinical Sentinel, PA Resolver, Supply Chain Orchestrator) run in sequence over synthetic patient data, then pause for a clinician to approve. All data is fictional.
+Autonomous clinical fulfillment engine, Cognizant BrAInstorm Challenge 2026 - MVP. 
+
+Three CrewAI agents (Clinical Sentinel, PA Resolver, Supply Chain Orchestrator) run in sequence over synthetic patient data, then pause for a clinician to approve. All data is fictional.
+
+1. **Clinical Sentinel:** A team of organ-specific agents (hepatic, renal, cardiac) simulates how a complex multi-drug regimen behaves over 72 hours. It catches cumulative toxicity and metabolic conflicts that pairwise checks miss, recommends dose adjustments, and writes an evidence-backed safety report.
+
+
+2. **Prior Authorization Resolver:** This agent checks the patient’s history and the Sentinel’s report against the insurer’s clinical policy criteria. It then assembles the PA package and submits it through standard FHIR / X12 278 channels, so approval takes seconds instead of days.
+
+
+3. **Predictive Supply Agent:** Once approval arrives, this agent checks pharmacy inventory. If stock is needed, it places a just-in-time EDI 850 purchase order timed to the patient’s appointment, which prevents both stockouts and expired-drug waste.
+
+## Primary Techstack
 
 - **Backend:** Python, FastAPI, CrewAI (`Process.sequential`), Gemini free tier
 - **Frontend:** Vite + React, same layout and palette as the dashboard mockup
