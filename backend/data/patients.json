@@ -1,0 +1,212 @@
+[
+  {
+    "id": "PT-1042",
+    "label": "Case 1: High-risk CYP3A4 inhibition",
+    "scenario": "Boosted antiretroviral starts for a kidney transplant recipient on tacrolimus",
+    "name": "Synthetic Patient A",
+    "age": 58,
+    "sex": "M",
+    "payer_id": "PAYER-NWH",
+    "diagnosis": {
+      "code": "B20",
+      "text": "HIV disease, with transplant (Z94.0)"
+    },
+    "medications": [
+      {
+        "id": "tacrolimus",
+        "label": "Drug B",
+        "name": "Tacrolimus",
+        "dose": "1.2 mg every 12 h"
+      },
+      {
+        "id": "amlodipine",
+        "label": "Drug C",
+        "name": "Amlodipine",
+        "dose": "5 mg daily"
+      },
+      {
+        "id": "atorvastatin",
+        "label": "Drug D",
+        "name": "Atorvastatin",
+        "dose": "20 mg daily"
+      },
+      {
+        "name": "Mycophenolate",
+        "dose": "500 mg twice daily"
+      },
+      {
+        "name": "Prednisone",
+        "dose": "5 mg daily"
+      },
+      {
+        "name": "Lisinopril",
+        "dose": "10 mg daily"
+      },
+      {
+        "name": "Pantoprazole",
+        "dose": "40 mg daily"
+      }
+    ],
+    "new_rx": {
+      "perpetrator_id": "ritonavir_boosted",
+      "name": "Drug A",
+      "regimen": "Ritonavir-boosted regimen",
+      "dose": "per label, daily",
+      "cpt": "96365"
+    },
+    "simulated_victim": "tacrolimus",
+    "interaction_victims": [
+      "tacrolimus",
+      "amlodipine",
+      "atorvastatin"
+    ],
+    "labs": {
+      "hiv_rna_copies_ml": 18400,
+      "egfr": 54,
+      "alt_u_l": 31
+    },
+    "chart_flags": {
+      "tb_screen_negative_12mo": true,
+      "formulary_preferred": false
+    },
+    "prior_therapy": [],
+    "days_until_appointment": 10
+  },
+  {
+    "id": "PT-2089",
+    "label": "Case 2: Specialty stockout and step-therapy PA",
+    "scenario": "Crohn's disease biologic with 2 days of stock and a policy step-therapy requirement",
+    "name": "Synthetic Patient B",
+    "age": 41,
+    "sex": "F",
+    "payer_id": "PAYER-NWH",
+    "diagnosis": {
+      "code": "K50.90",
+      "text": "Crohn's disease, unspecified"
+    },
+    "medications": [
+      {
+        "name": "Azathioprine",
+        "dose": "100 mg daily (stopped, inadequate response)"
+      },
+      {
+        "name": "Mesalamine",
+        "dose": "2.4 g daily"
+      },
+      {
+        "name": "Folic acid",
+        "dose": "1 mg daily"
+      },
+      {
+        "name": "Vitamin D3",
+        "dose": "2000 IU daily"
+      },
+      {
+        "name": "Omeprazole",
+        "dose": "20 mg daily"
+      },
+      {
+        "name": "Ferrous sulfate",
+        "dose": "325 mg daily"
+      },
+      {
+        "id": "atorvastatin",
+        "label": "Drug B",
+        "name": "Atorvastatin",
+        "dose": "20 mg daily"
+      }
+    ],
+    "new_rx": {
+      "perpetrator_id": "biologic_none",
+      "name": "Drug A",
+      "regimen": "TNF-inhibitor biologic",
+      "dose": "40 mg every 2 weeks",
+      "cpt": "96413"
+    },
+    "simulated_victim": "atorvastatin",
+    "interaction_victims": [],
+    "labs": {
+      "crp_mg_l": 38,
+      "albumin_g_dl": 3.4
+    },
+    "chart_flags": {
+      "tb_screen_negative_12mo": true,
+      "formulary_preferred": false
+    },
+    "prior_therapy": [
+      {
+        "drug": "Azathioprine",
+        "weeks": 14,
+        "outcome": "inadequate response",
+        "note_date": "2026-03-04"
+      }
+    ],
+    "days_until_appointment": 3
+  },
+  {
+    "id": "PT-3115",
+    "label": "Case 3: Standard fast-track clearance",
+    "scenario": "Formulary-preferred antihypertensive with a mild metabolic overlap",
+    "name": "Synthetic Patient C",
+    "age": 63,
+    "sex": "F",
+    "payer_id": "PAYER-NWH",
+    "diagnosis": {
+      "code": "I10",
+      "text": "Essential hypertension"
+    },
+    "medications": [
+      {
+        "id": "simvastatin",
+        "label": "Drug B",
+        "name": "Simvastatin",
+        "dose": "20 mg daily"
+      },
+      {
+        "name": "Metformin",
+        "dose": "500 mg twice daily"
+      },
+      {
+        "name": "Aspirin",
+        "dose": "81 mg daily"
+      },
+      {
+        "name": "Levothyroxine",
+        "dose": "75 mcg daily"
+      },
+      {
+        "name": "Losartan",
+        "dose": "50 mg daily"
+      },
+      {
+        "name": "Calcium carbonate",
+        "dose": "500 mg daily"
+      },
+      {
+        "name": "Vitamin D3",
+        "dose": "1000 IU daily"
+      }
+    ],
+    "new_rx": {
+      "perpetrator_id": "amlodipine_weak",
+      "name": "Drug A",
+      "regimen": "Formulary-preferred agent",
+      "dose": "5 mg daily",
+      "cpt": null
+    },
+    "simulated_victim": "simvastatin",
+    "interaction_victims": [
+      "simvastatin"
+    ],
+    "labs": {
+      "ldl_mg_dl": 112,
+      "alt_u_l": 24
+    },
+    "chart_flags": {
+      "tb_screen_negative_12mo": true,
+      "formulary_preferred": true
+    },
+    "prior_therapy": [],
+    "days_until_appointment": 14
+  }
+]
